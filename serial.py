@@ -25,6 +25,10 @@ class SerialGenerator:
         self.start = start
         self.start_fix = start
 
+    def __repr__(self):
+        "String representation to provide a nicer appearance in debugging messages or in the console"
+        return f"<SerialGenerator start={self.start_fix} next={self.start}>"
+
     def generate(self):
         "Get new unique incrementing serial number."
         current_serial_number = self.start
