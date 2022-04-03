@@ -11,9 +11,6 @@ class WordFinder:
     'cat'
 
     >>> wf.random()
-    'cat'
-
-    >>> wf.random()
     'porcupine'
 
     >>> wf.random()
@@ -40,3 +37,19 @@ class WordFinder:
         "Return a random word from a words list."
         return random.choice(self.words_find)
 
+
+class SpecialWordFinder(WordFinder):
+    """Special WordFinder class excludes blank lines or comments on the lines.
+    
+    >>> swf = SpecialWordFinder("words.txt")
+    3 words read
+
+    """
+    def special_read(self, file):
+        "Read each line on the file and return a list with all word find it skipping blanks/comments."
+        words_list = []
+        for line in file:
+            if line.strip() and not line.startswith("#"):
+                words_list.append(line.strip())
+
+        return words_list
